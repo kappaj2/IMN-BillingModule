@@ -9,28 +9,16 @@
     <name>Billingmodule</name>
 
     <repositories>
-        <!-- TODO Remove snapshot repositories after final Spring Cloud release -->
+        <!-- jhipster-needle-maven-repository -->
         <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>http://repo.spring.io/milestone</url>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/libs-snapshot</url>
             <snapshots>
-                <enabled>false</enabled>
+                <enabled>true</enabled>
             </snapshots>
         </repository>
-        <!-- jhipster-needle-maven-repository -->
     </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>http://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
 
     <properties>
         <!-- Build properties -->
@@ -53,7 +41,8 @@
         <profile.swagger />
 
         <!-- Dependency versions -->
-        <jhipster-dependencies.version>2.0.13</jhipster-dependencies.version>
+
+        <jhipster-dependencies.version>2.0.14</jhipster-dependencies.version>
         <!-- The spring-boot version should match the one managed by
         https://mvnrepository.com/artifact/io.github.jhipster/jhipster-dependencies/${jhipster-dependencies.version} -->
         <spring-boot.version>2.0.3.RELEASE</spring-boot.version>
@@ -103,7 +92,7 @@
         <sonar.surefire.reportsPath>${project.testresult.directory}/surefire-reports</sonar.surefire.reportsPath>
         <sonar.tests>${project.basedir}/src/test/</sonar.tests>
 
-        <spring-cloud-gcp.version>1.0.0.M3</spring-cloud-gcp.version>
+        <spring-cloud-gcp.version>1.1.0.BUILD-SNAPSHOT</spring-cloud-gcp.version>
         <spring-boot-release.version>2.0.2.RELEASE</spring-boot-release.version>
 
         <!-- jhipster-needle-maven-property -->
@@ -148,7 +137,6 @@
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-core</artifactId>
-            <!--<version>5.0.5.RELEASE</version>-->
         </dependency>
 
         <dependency>
