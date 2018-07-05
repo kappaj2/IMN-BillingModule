@@ -18,8 +18,8 @@ public final class HeaderUtil {
 
     public static HttpHeaders createAlert(String message, String param) {
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-billingmoduleApp-alert", message);
-        headers.add("X-billingmoduleApp-params", param);
+        headers.add("X-" + APPLICATION_NAME + "-alert", message);
+        headers.add("X-" + APPLICATION_NAME + "-params", param);
         return headers;
     }
 
@@ -38,8 +38,8 @@ public final class HeaderUtil {
     public static HttpHeaders createFailureAlert(String entityName, String errorKey, String defaultMessage) {
         log.error("Entity processing failed, {}", defaultMessage);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-billingmoduleApp-error", "error." + errorKey);
-        headers.add("X-billingmoduleApp-params", entityName);
+        headers.add("X-" + APPLICATION_NAME + "-error", "error." + errorKey);
+        headers.add("X-" + APPLICATION_NAME + "-params", entityName);
         return headers;
     }
 }
