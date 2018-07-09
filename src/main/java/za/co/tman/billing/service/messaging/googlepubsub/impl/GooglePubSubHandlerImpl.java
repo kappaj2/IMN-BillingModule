@@ -19,11 +19,10 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.gax.retrying.RetrySettings;
-import com.google.cloud.ServiceOptions;
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.Duration;
 import com.google.pubsub.v1.PubsubMessage;
-import com.google.pubsub.v1.TopicName;
 import za.co.tman.billing.config.MessageImplementationCondition;
 import za.co.tman.billing.config.PubSubMessagingProperties;
 import za.co.tman.billing.enums.PubSubMessageType;
@@ -103,7 +102,18 @@ public class GooglePubSubHandlerImpl implements GooglePubSubHandler {
     public void publishMessage(InterModulePubSubMessage interModulePubSubMessage, String topicName) {
 
         try {
-            Publisher publisher = Publisher.newBuilder(topicName).build();
+            org.threeten.bp.Duration retryDelay = org.threeten.bp.Duration.ofSeconds(1l);
+            double retryDelayMultiplier = 2.0;
+            org.threeten.bp.Duration maxRetryDelay = org.threeten.bp.Duration.ofSeconds(50);
+            
+            RetrySettings retrySettings = RetrySettings.newBuilder().
+                setInitialRetryDelay(retryDelay).
+                setMaxRetryDelay(maxRetryDelay).
+                setRetryDelayMultiplier(retryDelayMultiplier).
+                build();
+            
+            Publisher publisher = Publisher.newBuilder(topicName).
+                setRetrySettings(retrySettings).build();
     
             String payloadJson = objectMapper.writeValueAsString(interModulePubSubMessage);
     
