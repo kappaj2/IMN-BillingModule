@@ -9,8 +9,6 @@ import za.co.tman.billing.enums.EventType;
 import za.co.tman.billing.enums.IncidentPriority;
 import za.co.tman.billing.enums.PubSubMessageType;
 
-
-//@Data
 public class InterModulePubSubMessage {
     
     /**

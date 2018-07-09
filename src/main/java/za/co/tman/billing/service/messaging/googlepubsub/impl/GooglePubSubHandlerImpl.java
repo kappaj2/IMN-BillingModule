@@ -21,7 +21,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;
-import com.google.protobuf.Duration;
 import com.google.pubsub.v1.PubsubMessage;
 import za.co.tman.billing.config.MessageImplementationCondition;
 import za.co.tman.billing.config.PubSubMessagingProperties;
