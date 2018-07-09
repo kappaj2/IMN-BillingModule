@@ -4,14 +4,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import za.co.tman.billing.enums.enumwrappers.PubSubMessageTypeDeserializer;
+import za.co.tman.billing.enums.enumwrappers.PubSubMessageTypeSerializer;
 
 
 /**
  * The different message types that will be transmitted between the modules.
  * Each module can in turn have different message types, it create of Incident, update of Incident, etc.
  */
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@JsonDeserialize(using = PubSubMessageTypeDeserializer.class)
+@JsonSerialize(using = PubSubMessageTypeSerializer.class)
 public enum PubSubMessageType {
     
     GENERIC("GenericMessage", "Generic string message."),
@@ -21,7 +25,7 @@ public enum PubSubMessageType {
     private String messageTypeDescription;
     
     private static final Map<String, PubSubMessageType> pubSubMessageTypeMap = new HashMap<>();
-    
+
     static {
         Arrays.stream(PubSubMessageType.values()).forEach(messageType
             -> pubSubMessageTypeMap.put(messageType.getMessageTypeCode(), messageType));

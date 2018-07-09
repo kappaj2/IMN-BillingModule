@@ -8,11 +8,7 @@
     "node_modules"
   ],
   "devDependencies": {
-<<<<<<< HEAD
-    "generator-jhipster": "5.0.1"
-=======
     "generator-jhipster": "5.0.2"
->>>>>>> jhipster_upgrade
   },
   "engines": {
     "node": ">=8.9.0"
