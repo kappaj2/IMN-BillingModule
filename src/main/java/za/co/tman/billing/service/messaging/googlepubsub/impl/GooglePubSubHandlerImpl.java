@@ -72,7 +72,12 @@ public class GooglePubSubHandlerImpl implements GooglePubSubHandler {
                 String messageData = pubsubMessage.getData().toStringUtf8();
                 Map<String, String> attributesMap = pubsubMessage.getAttributesMap();
                 String messageTypeCode = attributesMap.get("MessageTypeCode");
-                log.info("Received message type : %s ".concat( messageTypeCode));
+                
+                if(messageTypeCode != null) {
+                    log.info("Received message type : %s ".concat(messageTypeCode));
+                }else{
+                    log.error("Did not receive a messageType in the header - please investigate");
+                }
                 
                 PubSubMessageType pubSubMessageType = PubSubMessageType.findPubSubMessageType(messageTypeCode);
                 

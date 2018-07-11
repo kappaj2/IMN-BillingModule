@@ -44,7 +44,7 @@ spring:
         password:
     h2:
         console:
-            enabled: false
+            enabled: true
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedH2Dialect
         database: H2
@@ -94,7 +94,7 @@ spring:
 #        key-alias: billingmodule
 # ===================================================================
 server:
-    port: 8081
+    port: 8091
 
 # ===================================================================
 # JHipster specific properties
@@ -131,7 +131,7 @@ jhipster:
                 token-validity-in-seconds-for-remember-me: 2592000
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: billingmodule@localhost
-        base-url: http://127.0.0.1:8081
+        base-url: http://127.0.0.1:8091
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:
             enabled: true
