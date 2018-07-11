@@ -1,10 +1,12 @@
 package za.co.tman.billing.security.jwt;
 
-import io.github.jhipster.config.JHipsterProperties;
-
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Collection;
+import java.util.Date;
 import java.util.stream.Collectors;
+
 import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
@@ -16,7 +18,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.*;
+import io.github.jhipster.config.JHipsterProperties;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
 
 @Component
 public class TokenProvider {
@@ -41,6 +50,9 @@ public class TokenProvider {
 
     @PostConstruct
     public void init() {
+        log.info("Getting secretkey value for Token :"+jHipsterProperties.toString());
+        log.info("Getting secretkey value for Token - jwt :"+jHipsterProperties.getSecurity().getAuthentication().getJwt().toString());
+        
         this.secretKey = encoder.encodeToString(jHipsterProperties.getSecurity().getAuthentication().getJwt()
             .getSecret().getBytes(StandardCharsets.UTF_8));
 

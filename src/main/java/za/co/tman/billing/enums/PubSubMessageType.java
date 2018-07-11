@@ -19,7 +19,8 @@ import za.co.tman.billing.enums.enumwrappers.PubSubMessageTypeSerializer;
 public enum PubSubMessageType {
     
     GENERIC("GenericMessage", "Generic string message."),
-    INCIDENT("IncidentMessage", "Message used to create/update/close incidents.");
+    INCIDENT("IncidentMessage", "Message used to create/update/close incidents."),
+    LOGGING("LoggingMessage", "Message that must be logged to MongoDB");
     
     private String messageTypeCode;
     private String messageTypeDescription;

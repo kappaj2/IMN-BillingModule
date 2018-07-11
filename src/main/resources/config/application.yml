@@ -81,7 +81,7 @@ management:
 
 spring:
     application:
-        name: billingmodule
+        name: billingmodule11
     jpa:
         open-in-view: false
         hibernate:
