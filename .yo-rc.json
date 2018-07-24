@@ -4,7 +4,7 @@
       "packageName": "za.co.tman.billing",
       "nativeLanguage": "en"
     },
-    "jhipsterVersion": "5.0.0-beta.2",
+    "jhipsterVersion": "5.1.0",
     "applicationType": "microservice",
     "baseName": "billingmodule",
     "packageName": "za.co.tman.billing",
